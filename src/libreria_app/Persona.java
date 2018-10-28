@@ -16,7 +16,13 @@ public class Persona {
 
     public Persona() {
     }
-
+    
+    /**
+     * 
+     * @param rut
+     * @param nombre
+     * @param edad 
+     */
     public Persona(String rut, String nombre, int edad) {
         this.rut = rut;
         this.nombre = nombre;

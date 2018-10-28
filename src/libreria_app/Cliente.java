@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * @author Diego Aguilef
  */
 public class Cliente  extends Persona{
-    private Fecha fecha_subscripcion = new Fecha();
-    private int libros_adquiridos = 0;
-    private ArrayList<Libro> libros = new ArrayList<>();;
+    private Fecha fecha_subscripcion;
+    private int libros_adquiridos;
+    private ArrayList<Libro> libros;
 
     public Cliente() {
     }
@@ -26,6 +26,9 @@ public class Cliente  extends Persona{
      */
     public Cliente(String rut, String nombre, int edad) {
         super(rut, nombre, edad);
+        this.fecha_subscripcion = new Fecha();
+        this.libros_adquiridos = 0;
+        this.libros = new ArrayList<>();
     }
 
     public Fecha getFecha_subscripcion() {

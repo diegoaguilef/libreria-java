@@ -13,13 +13,21 @@ public class Autor {
     private String nombre;
     private Fecha fecha_nacimiento = new Fecha();
     private String pais;
+    private int autor_id;
 
     public Autor() {
     }
-
-    public Autor(String nombre, String pais) {
+    
+    /**
+     * 
+     * @param nombre
+     * @param pais
+     * @param id 
+     */
+    public Autor(String nombre, String pais, int id) {
         this.nombre = nombre;
         this.pais = pais;
+        this.autor_id = 0;
     }
 
     public String getNombre() {
@@ -29,6 +37,14 @@ public class Autor {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    public int getAutorId() {
+        return autor_id;
+    }
+
+    public void setAutorId(int id) {
+        this.autor_id = id;
+    }
 
     public Fecha getFecha_nacimiento() {
         return fecha_nacimiento;
@@ -37,6 +53,8 @@ public class Autor {
     public void setFecha_nacimiento(Fecha fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
+    
+    
 
     public String getPais() {
         return pais;

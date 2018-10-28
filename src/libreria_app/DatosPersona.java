@@ -26,16 +26,13 @@ public class DatosPersona {
     }
     
     public boolean agregarPersona(Persona persona){
-        boolean status =  false;
         for(Persona xx: personas){
             if(!xx.getRut().equals(persona.getRut())){
-                personas.add(persona);
-                status = true;
-                break;
+                return false;
             }
         }
-        
-        return status;
+        personas.add(persona);
+        return true;
     }
     
     public boolean eliminarPersona(Persona persona){
