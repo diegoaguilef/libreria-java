@@ -12,13 +12,28 @@ package libreria_app;
 public class Libro {
     private String nombre;
     private String editorial;
-    private Fecha fecha_publicacion;
+    private int anio_publicacion;
     private int stock;
     private Autor autor;
 
     public Libro() {
         this.autor = new Autor();
-        this.fecha_publicacion = new Fecha();
+    }
+    
+    /**
+     * 
+     * @param nombre
+     * @param editorial
+     * @param fecha_publicacion
+     * @param stock
+     * @param autor 
+     */
+    public Libro(String nombre, String editorial, int anio_publicacion, int stock, Autor autor) {
+        this.nombre = nombre;
+        this.editorial = editorial;
+        this.anio_publicacion = anio_publicacion;
+        this.stock = stock;
+        this.autor = autor;
     }
 
     public String getNombre() {
@@ -45,19 +60,19 @@ public class Libro {
         this.editorial = editorial;
     }
 
-    public Fecha getFecha_publicacion() {
-        return fecha_publicacion;
+    public int getAnio_publicacion() {
+        return anio_publicacion;
     }
 
-    public void setFecha_publicacion(Fecha fecha_publicacion) {
-        this.fecha_publicacion = fecha_publicacion;
+    public void setFecha_publicacion(int anio_publicacion) {
+        this.anio_publicacion = anio_publicacion;
     }
 
     @Override
     public String toString() {
         return "Libro: "+ nombre + 
                 ", Editorial:" + editorial + 
-                ", Fecha Publicacion: " + fecha_publicacion.toString() + 
+                ", Fecha Publicacion: " + anio_publicacion + 
                 ", Autor: " + autor.getNombre();
     }
 

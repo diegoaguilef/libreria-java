@@ -13,8 +13,12 @@ import java.util.ArrayList;
  */
 public class DatosLibro {
     private ArrayList<Libro> libros = new ArrayList<>();
+    private final ArrayList<DatosAutor> datosAutor;
 
     public DatosLibro() {
+        datosAutor = datosAutor.
+        libros.add(new Libro("La esfinge",1898,10,))
+                
         
     }
     
