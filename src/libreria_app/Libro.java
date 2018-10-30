@@ -51,6 +51,10 @@ public class Libro {
     public void setStock(int stock) {
         this.stock = stock;
     }
+    
+    public Autor getAutor(){
+        return autor;
+    }
 
     public String getEditorial() {
         return editorial;

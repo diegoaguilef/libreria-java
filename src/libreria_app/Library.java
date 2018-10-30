@@ -21,12 +21,12 @@ public class Library {
         this.cliente = new Cliente();
     }
 
-    public Library(String _nombre, String _direccion, int _telefono) {
+    public Library(String nombre, String direccion, int telefono) {
         this.libro = new Libro();
         this.cliente = new Cliente();
-        this.nombre = _nombre;
-        this.direccion = _direccion;
-        this.telefono = _telefono;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
     }
     
     

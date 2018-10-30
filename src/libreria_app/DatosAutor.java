@@ -12,13 +12,20 @@ import java.util.ArrayList;
  * @author kdieg
  */
 public class DatosAutor {
-    private ArrayList<Autor> autores = new ArrayList<>();
+    private static ArrayList<Autor> autores = new ArrayList<>();
 
     public DatosAutor() {
+    }
+    
+    public static void llenarAutores(){
         autores.add(new Autor("Miguel de Unamuno", "España", 1));
         autores.add(new Autor("Marcela Paz", "Chile", 2));
         autores.add(new Autor("Oscar Wilde", "Irlanda", 3));
         autores.add(new Autor("Federico García Lorca", "España", 4));
+    }
+    
+    public static ArrayList<Autor> getAutores(){
+        return autores;
     }
     
     public boolean agregarAutor(Autor autor){

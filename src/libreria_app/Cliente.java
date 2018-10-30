@@ -22,10 +22,9 @@ public class Cliente  extends Persona{
      * 
      * @param rut
      * @param nombre
-     * @param edad 
      */
-    public Cliente(String rut, String nombre, int edad) {
-        super(rut, nombre, edad);
+    public Cliente(String rut, String nombre) {
+        super(rut, nombre);
         this.fecha_subscripcion = new Fecha();
         this.libros_adquiridos = 0;
         this.libros = new ArrayList<>();

@@ -12,13 +12,21 @@ import java.util.ArrayList;
  * @author kdieg
  */
 public class DatosPersona {
-    private ArrayList<Persona> personas = new ArrayList<>();
+    private static ArrayList<Persona> personas = new ArrayList<>();
+    
     public DatosPersona() {
-        personas.add(new Persona("18366475-1", "Diego", 25));
-        personas.add(new Persona("17893741-0", "Raul", 21));
-        personas.add(new Persona("19209667-k", "Maria", 20));
-        personas.add(new Persona("18500154-0", "Laura", 24));
-        personas.add(new Persona("19908111-1", "Carlos", 19));
+    }
+
+    public static ArrayList<Persona> getPersonas() {
+        return personas;
+    }    
+    
+    public static void llenarPersonas(){
+        personas.add(new Persona("18366475-1", "Diego"));
+        personas.add(new Persona("17893741-0", "Raul"));
+        personas.add(new Persona("19209667-k", "Maria"));
+        personas.add(new Persona("18500154-0", "Laura"));
+        personas.add(new Persona("19908111-1", "Carlos"));
     }
     
     public ArrayList<Persona> listaPersonas(){

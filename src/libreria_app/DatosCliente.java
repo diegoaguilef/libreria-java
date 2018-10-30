@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author kdieg
  */
 public class DatosCliente extends DatosPersona {
-    private ArrayList<Cliente> clientes = new ArrayList<>();
+    private static ArrayList<Cliente> clientes = new ArrayList<>();
 
     public DatosCliente() {
     }
@@ -23,8 +23,7 @@ public class DatosCliente extends DatosPersona {
             if(!cl.getRut().equals(persona.getRut())){
                 Cliente cliente = new Cliente(
                         persona.getRut(), 
-                        persona.getNombre(), 
-                        persona.getEdad());
+                        persona.getNombre());
                 Fecha fecha = new Fecha(27,10,2018);
                 cliente.setFecha_subscripcion(fecha);
                 clientes.add(cliente);

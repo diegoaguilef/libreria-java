@@ -12,7 +12,6 @@ package libreria_app;
 public class Persona {
     private String rut;
     private String nombre;
-    private int edad;
 
     public Persona() {
     }
@@ -23,10 +22,9 @@ public class Persona {
      * @param nombre
      * @param edad 
      */
-    public Persona(String rut, String nombre, int edad) {
+    public Persona(String rut, String nombre) {
         this.rut = rut;
         this.nombre = nombre;
-        this.edad = edad;
     }
 
     public String getRut() {
@@ -45,17 +43,9 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
     @Override
     public String toString() {
-        return "Persona: " + "rut: " + rut + ", nombre: " + nombre + ", edad: " + edad ;
+        return "Persona: " + "rut: " + rut + ", nombre: " + nombre;
     }
     
     
