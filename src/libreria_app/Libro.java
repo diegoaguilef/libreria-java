@@ -12,9 +12,10 @@ package libreria_app;
 public class Libro {
     private String nombre;
     private String editorial;
-    private int anio_publicacion;
+    private int anioPublicacion;
     private int stock;
     private Autor autor;
+    private int id;
 
     public Libro() {
         this.autor = new Autor();
@@ -31,9 +32,18 @@ public class Libro {
     public Libro(String nombre, String editorial, int anio_publicacion, int stock, Autor autor) {
         this.nombre = nombre;
         this.editorial = editorial;
-        this.anio_publicacion = anio_publicacion;
+        this.anioPublicacion = anio_publicacion;
         this.stock = stock;
         this.autor = autor;
+    }
+    
+    public Libro(String nombre, String editorial, int anio_publicacion, int stock, Autor autor, int id) {
+        this.nombre = nombre;
+        this.editorial = editorial;
+        this.anioPublicacion = anio_publicacion;
+        this.stock = stock;
+        this.autor = autor;
+        this.id = id;
     }
 
     public String getNombre() {
@@ -64,19 +74,27 @@ public class Libro {
         this.editorial = editorial;
     }
 
-    public int getAnio_publicacion() {
-        return anio_publicacion;
+    public int getAnioPublicacion() {
+        return anioPublicacion;
     }
 
-    public void setFecha_publicacion(int anio_publicacion) {
-        this.anio_publicacion = anio_publicacion;
+    public void setAnioPublicacion(int anio_publicacion) {
+        this.anioPublicacion = anio_publicacion;
     }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
     @Override
     public String toString() {
-        return "Libro: "+ nombre + 
+        return "Id: "+id+", Libro: "+ nombre + 
                 ", Editorial:" + editorial + 
-                ", Fecha Publicacion: " + anio_publicacion + 
+                ", Fecha Publicacion: " + anioPublicacion + 
                 ", Autor: " + autor.getNombre();
     }
 

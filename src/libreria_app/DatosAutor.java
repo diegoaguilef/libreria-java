@@ -13,51 +13,99 @@ import java.util.ArrayList;
  */
 public class DatosAutor {
     private static ArrayList<Autor> autores = new ArrayList<>();
-
     public DatosAutor() {
     }
     
     public static void llenarAutores(){
-        autores.add(new Autor("Miguel de Unamuno", "España", 1));
-        autores.add(new Autor("Marcela Paz", "Chile", 2));
-        autores.add(new Autor("Oscar Wilde", "Irlanda", 3));
-        autores.add(new Autor("Federico García Lorca", "España", 4));
+        agregar(new Autor("Miguel de Unamuno", "España", new Fecha(29, 9, 1864)));
+        agregar(new Autor("Marcela Paz", "Chile", new Fecha(28, 2, 1902)));
+        agregar(new Autor("Oscar Wilde", "Irlanda", new Fecha(16, 10, 1854)));
+        agregar(new Autor("Federico García Lorca", "España", new Fecha(5, 6, 1898)));
     }
     
     public static ArrayList<Autor> getAutores(){
         return autores;
     }
     
-    public boolean agregarAutor(Autor autor){
-        for(Autor xx: autores){
-            if(xx.getAutorId() != autor.getAutorId()){
-                return false;
-            }
+    public static int maxId(){
+      int aux = 0, mId = 0;
+      for(Autor autor : autores){
+        if(autor.getId() > aux){
+         mId = autor.getId();
+         aux = mId;
         }
-        autores.add(autor);
-        return true;
+      }
+      return mId;
     }
     
-    public boolean eliminarAutor(Autor autor){
+    /**
+     * 
+     * @param autor
+     * @return 
+     */
+    public static boolean agregar(Autor autor){
+      for(Autor xx: autores){
+          if(xx.getNombre().equals(autor.getNombre())){
+              return false;
+          }
+      }
+      autor.setId(maxId() + 1);
+      autores.add(autor);
+      return true;
+    }
+    
+    public static boolean eliminar(int id){
         int i = 0;
         for(Autor at: autores){
-            if(at.getAutorId() == autor.getAutorId()){
-                autores.remove(i);
-                return true;
-            }
+          if(at.getId() == id){
+              autores.remove(i);
+              return true;
+          }
+          i++;
+        }
+        return false;
+    }
+    /**
+     * @param autor
+     * @return 
+    */
+    public static boolean editar(Autor autor){
+        int i = 0;
+        for(Autor at: autores){
+          if(at.getId() == autor.getId()){
+              autores.set(i, autor);
+              return true;
+          }
+          i++;
         }
         return false;
     }
     
-    public boolean editarAutor(Autor autor){
-        int i = 0;
+    
+    /**
+     * 
+     * @param nombre
+     * @return 
+     */
+    
+    public static Autor buscarId(int id){
+        Autor autor = null;
         for(Autor at: autores){
-            if(at.getAutorId() == autor.getAutorId()){
-                autores.add(i, autor);
-                return true;
+            if(at.getId()== id){
+                autor = at;
             }
         }
-        return false;
+        return autor;
+    }
+    
+    public static Autor buscarNombre(String nombre){
+        Autor autor = null;
+        for(Autor at: autores){
+            if(at.getNombre().equals(nombre)){
+                autor = at;
+            }
+        }
+        return autor;
     }
     
 }

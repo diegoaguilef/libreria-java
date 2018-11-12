@@ -10,6 +10,4 @@ package libreria_app;
  * @author kdieg
  */
 public class DatosLibreria {
-    
-    
 }

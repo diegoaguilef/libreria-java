@@ -13,8 +13,7 @@ import java.util.ArrayList;
  */
 public class Cliente  extends Persona{
     private Fecha fecha_subscripcion;
-    private int libros_adquiridos;
-    private ArrayList<Libro> libros;
+    private ArrayList<Libro> librosAdquiridos;
 
     public Cliente() {
     }
@@ -26,46 +25,43 @@ public class Cliente  extends Persona{
     public Cliente(String rut, String nombre) {
         super(rut, nombre);
         this.fecha_subscripcion = new Fecha();
-        this.libros_adquiridos = 0;
-        this.libros = new ArrayList<>();
+        this.librosAdquiridos = new ArrayList<>();
     }
 
     public Fecha getFecha_subscripcion() {
         return fecha_subscripcion;
     }
 
-    public void setFecha_subscripcion(Fecha fecha_subscripcion) {
+    public void setFechaSubscripcion(Fecha fecha_subscripcion) {
         this.fecha_subscripcion = fecha_subscripcion;
     }
 
-    public int getLibros_adquiridos() {
-        return libros_adquiridos;
-    }
-
-    public String getLibros() {
-        String lista = "";
-        int i = 0;
-        for(Libro libro:libros){
-            lista += (i + ": "+libro.getNombre() + "\n");
-            i++;
-        }
-        return lista;
+    public ArrayList<Libro> getLibrosAdquiridos() {
+        return librosAdquiridos;
     }
     /**
      * 
      * @param libro 
      */
     public void setLibro(Libro libro) {
-        this.libros.add(libro);
-        this.libros_adquiridos += 1;
+        this.librosAdquiridos.add(libro);
+    }
+    
+    public void setLibrosAdquiridos(Libro libro) {
+        this.librosAdquiridos.add(libro);
     }
 
     @Override
     public String toString() {
-        return "Cliente: " + super.getNombre() + 
-                "Fecha Subscripcion: " + fecha_subscripcion.toString() + 
-                ", Libros Adquiridos: " + libros_adquiridos + 
-                ", libros: " + this.getLibros();
+      String libros = "";
+      int indice = 1;
+      for(Libro libro:librosAdquiridos){
+        libros += indice+": "+libro.getNombre()+"\n";
+        indice++;
+      }
+      return "Cliente: " + super.getNombre() + 
+              "Fecha Subscripcion: " + fecha_subscripcion.toString() +
+              ", Libros: " + libros;
     }
     
 }
