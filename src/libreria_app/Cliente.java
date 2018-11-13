@@ -47,8 +47,8 @@ public class Cliente  extends Persona{
         this.librosAdquiridos.add(libro);
     }
     
-    public void setLibrosAdquiridos(Libro libro) {
-        this.librosAdquiridos.add(libro);
+    public void setLibrosAdquiridos(ArrayList<Libro> libros) {
+        this.librosAdquiridos = libros;
     }
 
     @Override
@@ -56,12 +56,13 @@ public class Cliente  extends Persona{
       String libros = "";
       int indice = 1;
       for(Libro libro:librosAdquiridos){
-        libros += indice+": "+libro.getNombre()+"\n";
+        libros += indice+": "+libro.getNombre()+" ";
         indice++;
       }
-      return "Cliente: " + super.getNombre() + 
-              "Fecha Subscripcion: " + fecha_subscripcion.toString() +
-              ", Libros: " + libros;
+      return "Cliente: " + this.getNombre() +
+              ", Rut: "+ this.getRut() +
+              ", Fecha Subscripcion: " + fecha_subscripcion.toString() +
+              ", \n - Libros: " + libros;
     }
     
 }

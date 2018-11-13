@@ -21,6 +21,7 @@ public class DatosPersona {
         return personas;
     }    
     
+    /*
     public static void llenarPersonas(){
         personas.add(new Persona("18366475-1", "Diego"));
         personas.add(new Persona("17893741-0", "Raul"));
@@ -28,7 +29,7 @@ public class DatosPersona {
         personas.add(new Persona("18500154-0", "Laura"));
         personas.add(new Persona("19908111-1", "Carlos"));
     }
-    
+    */
     public ArrayList<Persona> listaPersonas(){
         return personas;
     }

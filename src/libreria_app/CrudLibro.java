@@ -20,6 +20,7 @@ public class CrudLibro extends javax.swing.JFrame {
    */
   public CrudLibro() {
     initComponents();
+    setLocationRelativeTo(this);
     llenarComboBoxAutores(DatosAutor.getAutores(), comboAutor);
   }
   

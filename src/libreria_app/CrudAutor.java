@@ -19,6 +19,7 @@ public class CrudAutor extends javax.swing.JFrame {
    */
   public CrudAutor() {
     initComponents();
+    setLocationRelativeTo(this);
   }
   
   public boolean validarFecha(String fecha){

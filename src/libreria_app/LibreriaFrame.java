@@ -19,10 +19,10 @@ public class LibreriaFrame extends javax.swing.JFrame {
     /**
      * Creates new form Libreria_frame
      */
-    public static void llenarComboBoxPersonas(ArrayList<Persona> arrayList, JComboBox comboBox){
+    public static void llenarComboBoxClientes(ArrayList<Cliente> arrayList, JComboBox comboBox){
         comboBox.removeAllItems();
         comboBox.addItem("Seleccionar");
-        for(Persona xx: arrayList){
+        for(Cliente xx: arrayList){
             comboBox.addItem(xx.getNombre());
         }
     }
@@ -43,13 +43,18 @@ public class LibreriaFrame extends javax.swing.JFrame {
         }
     }
     
+    public void listarClientes(){
+      areaListado.setText("");
+      for(Cliente cl : DatosCliente.obtenerClientes()){
+        areaListado.setText(areaListado.getText() + cl.toString() + "\n");
+      }
+    }
+    
     public LibreriaFrame() {
-        DatosPersona.llenarPersonas();
         DatosAutor.llenarAutores();
         DatosLibro.llenar();
         initComponents();
         setLocationRelativeTo(this);
-        llenarComboBoxPersonas(DatosPersona.getPersonas(), cmbCliente);
         llenarComboBoxAutores(DatosAutor.getAutores(), cmbAutores);
         llenarComboBoxLibros(DatosLibro.getLibros(), cmbLibros);
     }
@@ -72,7 +77,7 @@ public class LibreriaFrame extends javax.swing.JFrame {
     jLabel2 = new javax.swing.JLabel();
     jLabel1 = new javax.swing.JLabel();
     cmbCliente = new javax.swing.JComboBox<>();
-    txtRutPersona = new javax.swing.JTextField();
+    txtRut = new javax.swing.JTextField();
     jLabel3 = new javax.swing.JLabel();
     cmbAutores = new javax.swing.JComboBox<>();
     jLabel4 = new javax.swing.JLabel();
@@ -88,16 +93,21 @@ public class LibreriaFrame extends javax.swing.JFrame {
     jLabel10 = new javax.swing.JLabel();
     txtInfoAutor = new javax.swing.JTextField();
     jLabel11 = new javax.swing.JLabel();
-    txtInfoStock = new javax.swing.JTextField();
+    txtStock = new javax.swing.JTextField();
     btnAsignar = new javax.swing.JButton();
     jLabel12 = new javax.swing.JLabel();
-    txtNombrePersona = new javax.swing.JTextField();
+    txtNombre = new javax.swing.JTextField();
     jLabel13 = new javax.swing.JLabel();
-    jTextField1 = new javax.swing.JTextField();
+    txtFechaSub = new javax.swing.JTextField();
     jScrollPane1 = new javax.swing.JScrollPane();
-    areaInformación = new javax.swing.JTextArea();
+    areaListado = new javax.swing.JTextArea();
     nuevoAutor = new javax.swing.JButton();
     nuevoLibro = new javax.swing.JButton();
+    btnDisociar = new javax.swing.JButton();
+    btnEliminar = new javax.swing.JButton();
+    btnListar = new javax.swing.JButton();
+    btnBuscar = new javax.swing.JButton();
+    btnEditarNombre = new javax.swing.JButton();
 
     MantenedorAutores.setVisible(true);
 
@@ -149,7 +159,7 @@ public class LibreriaFrame extends javax.swing.JFrame {
 
     txtTitle.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
     txtTitle.setText("Administrador de Libreria");
-    jPanel1.add(txtTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, -1));
+    jPanel1.add(txtTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
 
     jLabel2.setText("Creación de Pedidos");
     jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
@@ -165,12 +175,12 @@ public class LibreriaFrame extends javax.swing.JFrame {
     });
     jPanel1.add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 107, -1));
 
-    txtRutPersona.addActionListener(new java.awt.event.ActionListener() {
+    txtRut.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        txtRutPersonaActionPerformed(evt);
+        txtRutActionPerformed(evt);
       }
     });
-    jPanel1.add(txtRutPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 111, -1));
+    jPanel1.add(txtRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 111, -1));
 
     jLabel3.setText("Sel. Autor:");
     jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
@@ -242,38 +252,43 @@ public class LibreriaFrame extends javax.swing.JFrame {
     jLabel11.setText("Stock:");
     jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 40, -1));
 
-    txtInfoStock.setEditable(false);
-    txtInfoStock.addActionListener(new java.awt.event.ActionListener() {
+    txtStock.setEditable(false);
+    txtStock.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        txtInfoStockActionPerformed(evt);
+        txtStockActionPerformed(evt);
       }
     });
-    jPanel1.add(txtInfoStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 30, -1));
+    jPanel1.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 30, -1));
 
     btnAsignar.setText("Asignar libro");
-    jPanel1.add(btnAsignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, -1));
-
-    jLabel12.setText("Nombre:");
-    jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-
-    txtNombrePersona.addActionListener(new java.awt.event.ActionListener() {
+    btnAsignar.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        txtNombrePersonaActionPerformed(evt);
+        btnAsignarActionPerformed(evt);
       }
     });
-    jPanel1.add(txtNombrePersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 130, -1));
+    jPanel1.add(btnAsignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 110, -1));
+
+    jLabel12.setText("Nombre:");
+    jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+    txtNombre.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txtNombreActionPerformed(evt);
+      }
+    });
+    jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 130, -1));
 
     jLabel13.setText("Fecha Subscripción: ");
     jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
 
-    jTextField1.setEditable(false);
-    jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 100, -1));
+    txtFechaSub.setEditable(false);
+    jPanel1.add(txtFechaSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 100, -1));
 
-    areaInformación.setColumns(20);
-    areaInformación.setRows(5);
-    jScrollPane1.setViewportView(areaInformación);
+    areaListado.setColumns(20);
+    areaListado.setRows(5);
+    jScrollPane1.setViewportView(areaListado);
 
-    jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 400, 130));
+    jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 500, 130));
 
     nuevoAutor.setText("Nuevo Autor");
     nuevoAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -291,15 +306,55 @@ public class LibreriaFrame extends javax.swing.JFrame {
     });
     jPanel1.add(nuevoLibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
 
+    btnDisociar.setText("Desasignar Libro");
+    btnDisociar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDisociarActionPerformed(evt);
+      }
+    });
+    jPanel1.add(btnDisociar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
+
+    btnEliminar.setText("Eliminar Cliente");
+    btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEliminarActionPerformed(evt);
+      }
+    });
+    jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 130, -1));
+
+    btnListar.setText("Listar Clientes");
+    btnListar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnListarActionPerformed(evt);
+      }
+    });
+    jPanel1.add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 120, -1));
+
+    btnBuscar.setText("Buscar Cliente");
+    btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBuscarActionPerformed(evt);
+      }
+    });
+    jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 120, -1));
+
+    btnEditarNombre.setText("Editar Nombre");
+    btnEditarNombre.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEditarNombreActionPerformed(evt);
+      }
+    });
+    jPanel1.add(btnEditarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+      .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
     );
 
     pack();
@@ -307,11 +362,20 @@ public class LibreriaFrame extends javax.swing.JFrame {
 
     private void cmbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClienteActionPerformed
         // TODO add your handling code here:
+        if(cmbCliente.getSelectedItem() != null &&
+          cmbCliente.getSelectedIndex() != 0)
+        {
+          String nombre = String.valueOf(cmbCliente.getSelectedItem());
+          Cliente cliente = DatosCliente.buscarClienteNombre(nombre);
+          txtRut.setText(cliente.getRut());
+          txtNombre.setText(cliente.getNombre());
+          txtFechaSub.setText(cliente.getFecha_subscripcion().toString());
+        }
     }//GEN-LAST:event_cmbClienteActionPerformed
 
-    private void txtRutPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRutPersonaActionPerformed
+    private void txtRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRutPersonaActionPerformed
+    }//GEN-LAST:event_txtRutActionPerformed
 
     private void cmbAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAutoresActionPerformed
         // TODO add your handling code here:
@@ -351,16 +415,16 @@ public class LibreriaFrame extends javax.swing.JFrame {
         txtInfoEditorial.setText(editorial);
         txtInfoAnio.setText(anio);
         txtInfoAutor.setText(autor);
-        txtInfoStock.setText(stock);
+        txtStock.setText(stock);
     }//GEN-LAST:event_cmbLibrosActionPerformed
 
-    private void txtInfoStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInfoStockActionPerformed
+    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtInfoStockActionPerformed
+    }//GEN-LAST:event_txtStockActionPerformed
 
-    private void txtNombrePersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePersonaActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombrePersonaActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
 
   private void nuevoAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoAutorActionPerformed
     // TODO add your handling code here:
@@ -382,6 +446,131 @@ public class LibreriaFrame extends javax.swing.JFrame {
     frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     frame.setVisible(true);
   }//GEN-LAST:event_nuevoLibroActionPerformed
+
+  private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
+    // TODO add your handling code here:
+    String rut = "";
+    String nombre = "";
+    Fecha fechaSubs = null;
+    Libro libro = null;
+    int stock = Integer.parseInt(txtStock.getText());
+    int indexLibro = cmbLibros.getSelectedIndex();
+    if(!txtRut.getText().equals("") &&
+      !txtNombre.getText().equals("") &&
+      indexLibro != 0 && stock != 0){
+      rut = txtRut.getText();
+      nombre = txtNombre.getText();
+      String nombre_libro = String.valueOf(cmbLibros.getSelectedItem());
+      libro = DatosLibro.buscarNombre(nombre_libro);
+      Persona persona = new Persona(rut, nombre);
+      if(libro != null &&
+        libro.getStock() != 0 &&
+        DatosCliente.agregar(libro, persona))
+      {
+        listarClientes();
+        txtStock.setText(String.valueOf(libro.getStock()));
+        llenarComboBoxClientes(DatosCliente.obtenerClientes(), cmbCliente);
+        cmbCliente.setSelectedItem(persona.getNombre());
+        JOptionPane.showMessageDialog(null,"Libro Asignado a Cliente Correrctamente");
+      }else{
+        JOptionPane.showMessageDialog(null,"Libro No pudo ser asignado o Sin Stock");
+      }
+    }else{
+      if(stock == 0){
+        JOptionPane.showMessageDialog(null,"Libro sin Stock");
+      }else{
+       JOptionPane.showMessageDialog(null,"Debe Asignar un Rut, Nombre y un libro"); 
+      }
+    }
+    
+  }//GEN-LAST:event_btnAsignarActionPerformed
+
+  private void btnDisociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisociarActionPerformed
+    // TODO add your handling code here:
+    String rut = "";
+    String nombreLibro = "";
+    Libro libro = null;
+    int indexLibro = cmbLibros.getSelectedIndex();
+    
+    if(!txtRut.getText().equals("") && indexLibro != 0){
+      rut = txtRut.getText();
+      Cliente cliente = DatosCliente.buscarCliente(rut);
+      nombreLibro = String.valueOf(cmbLibros.getSelectedItem());
+      libro = DatosLibro.buscarNombre(nombreLibro);
+      if(DatosCliente.disociarLibro(libro, cliente)){
+        listarClientes();
+        JOptionPane.showMessageDialog(null, "Libro Disociado correctamente");
+      }else{
+        JOptionPane.showMessageDialog(null, "No existe libro asociado al cliente");
+      }
+    }else{
+      JOptionPane.showMessageDialog(null, "Debe Ingresar Rut y libro para disociar");
+    }
+  }//GEN-LAST:event_btnDisociarActionPerformed
+
+  private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    // TODO add your handling code here:
+    String rut = "";
+    if(!txtRut.getText().equals("")){
+      rut = txtRut.getText();
+      if(DatosCliente.eliminarCliente(rut)){
+        listarClientes();
+        JOptionPane.showMessageDialog(null, "Cliente Eliminado correctamente");
+      }else{
+        JOptionPane.showMessageDialog(null, "Rut ingresado no válido");
+      }
+    }else{
+      JOptionPane.showMessageDialog(null, "Ingrese un rut para Eliminar");
+    }
+  }//GEN-LAST:event_btnEliminarActionPerformed
+
+  private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+    // TODO add your handling code here:
+    listarClientes();
+  }//GEN-LAST:event_btnListarActionPerformed
+
+  private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+    // TODO add your handling code here:
+    String rut = "";
+    Cliente cliente = null;
+    if(!txtRut.getText().equals("")){
+      rut = txtRut.getText();
+      cliente = DatosCliente.buscarCliente(rut);
+      if(cliente != null){
+        txtNombre.setText(cliente.getNombre());
+        areaListado.setText(cliente.toString());
+        JOptionPane.showMessageDialog(null, "Cliente Encontrado");
+      }else{
+        JOptionPane.showMessageDialog(null, "Rut ingresado no válido");
+      }
+    }else{
+      JOptionPane.showMessageDialog(null, "Ingrese un rut para Buscar");
+    }
+  }//GEN-LAST:event_btnBuscarActionPerformed
+
+  private void btnEditarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarNombreActionPerformed
+    // TODO add your handling code here:
+    String rut = "";
+    String nombre = "";
+    Cliente cliente = null;
+    if(!txtRut.getText().equals("") && !txtRut.getText().equals("")){
+      rut = txtRut.getText();
+      nombre = txtNombre.getText();
+      cliente = DatosCliente.buscarCliente(rut);
+      if(cliente != null){
+        cliente.setNombre(nombre);
+        DatosCliente.editar(cliente);
+        areaListado.setText(cliente.toString());
+        llenarComboBoxClientes(DatosCliente.obtenerClientes(), cmbCliente);
+        cmbCliente.setSelectedItem(cliente.getNombre());
+        JOptionPane.showMessageDialog(null, "Nombre Editado");
+      }else{
+        JOptionPane.showMessageDialog(null, "Rut ingresado no válido");
+      }
+    }else{
+      JOptionPane.showMessageDialog(null, "Ingrese un rut y nombre para Editar");
+    }
+  }//GEN-LAST:event_btnEditarNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,8 +610,13 @@ public class LibreriaFrame extends javax.swing.JFrame {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JInternalFrame MantenedorAutores;
-  private javax.swing.JTextArea areaInformación;
+  private javax.swing.JTextArea areaListado;
   private javax.swing.JButton btnAsignar;
+  private javax.swing.JButton btnBuscar;
+  private javax.swing.JButton btnDisociar;
+  private javax.swing.JButton btnEditarNombre;
+  private javax.swing.JButton btnEliminar;
+  private javax.swing.JButton btnListar;
   private javax.swing.JComboBox<String> cmbAutores;
   private javax.swing.JComboBox<String> cmbCliente;
   private javax.swing.JComboBox<String> cmbLibros;
@@ -444,16 +638,16 @@ public class LibreriaFrame extends javax.swing.JFrame {
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
   private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JTextField jTextField1;
   private javax.swing.JButton nuevoAutor;
   private javax.swing.JButton nuevoLibro;
+  private javax.swing.JTextField txtFechaSub;
   private javax.swing.JTextField txtInfoAnio;
   private javax.swing.JTextField txtInfoAutor;
   private javax.swing.JTextField txtInfoEditorial;
   private javax.swing.JTextField txtInfoNombre;
-  private javax.swing.JTextField txtInfoStock;
-  private javax.swing.JTextField txtNombrePersona;
-  private javax.swing.JTextField txtRutPersona;
+  private javax.swing.JTextField txtNombre;
+  private javax.swing.JTextField txtRut;
+  private javax.swing.JTextField txtStock;
   private javax.swing.JLabel txtTitle;
   // End of variables declaration//GEN-END:variables
 }
