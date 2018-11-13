@@ -13,6 +13,7 @@ import libreria_app.db.DataHandler;
  * @author Diego_Aguilef
  * @version 1.0
  * @since 13-11-2018
+ * @see https://github.com/diegoaguilef/libreria_app
  */
 public class Libreria_app {
 
