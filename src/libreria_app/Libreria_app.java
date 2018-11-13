@@ -4,21 +4,23 @@
  * and open the template in the editor.
  */
 package libreria_app;
+
 import java.sql.ResultSet;
 import libreria_app.db.DataHandler;
 
-
 /**
  *
- * @author alumnossur
+ * @author Diego_Aguilef
+ * @version 1.0
+ * @since 13-11-2018
  */
 public class Libreria_app {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws Exception {
-      /*
+  /**
+   * @param args the command line arguments
+   */
+  public static void main(String[] args) throws Exception {
+    /*
       DataHandler datahandler = new DataHandler();
         ResultSet rset = datahandler.getClients();
         while (rset.next()) {
@@ -27,8 +29,8 @@ public class Libreria_app {
           rset.getString(3) + " " + 
           rset.getString(4));
         }
-        */
-      new LibreriaFrame().setVisible(true);
-    }
-    
+     */
+    new LibreriaFrame().setVisible(true);
+  }
+
 }
