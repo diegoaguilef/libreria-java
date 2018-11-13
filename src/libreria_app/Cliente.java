@@ -15,7 +15,10 @@ public class Cliente  extends Persona{
     private Fecha fecha_subscripcion;
     private ArrayList<Libro> librosAdquiridos;
 
-    public Cliente() {
+  /**
+   *
+   */
+  public Cliente() {
     }
     /**
      * 
@@ -28,15 +31,27 @@ public class Cliente  extends Persona{
         this.librosAdquiridos = new ArrayList<>();
     }
 
-    public Fecha getFecha_subscripcion() {
+  /**
+   *
+   * @return
+   */
+  public Fecha getFecha_subscripcion() {
         return fecha_subscripcion;
     }
 
-    public void setFechaSubscripcion(Fecha fecha_subscripcion) {
+  /**
+   *
+   * @param fecha_subscripcion
+   */
+  public void setFechaSubscripcion(Fecha fecha_subscripcion) {
         this.fecha_subscripcion = fecha_subscripcion;
     }
 
-    public ArrayList<Libro> getLibrosAdquiridos() {
+  /**
+   *
+   * @return
+   */
+  public ArrayList<Libro> getLibrosAdquiridos() {
         return librosAdquiridos;
     }
     /**
@@ -47,11 +62,19 @@ public class Cliente  extends Persona{
         this.librosAdquiridos.add(libro);
     }
     
-    public void setLibrosAdquiridos(ArrayList<Libro> libros) {
+  /**
+   *
+   * @param libros
+   */
+  public void setLibrosAdquiridos(ArrayList<Libro> libros) {
         this.librosAdquiridos = libros;
     }
 
-    @Override
+  /**
+   *
+   * @return
+   */
+  @Override
     public String toString() {
       String libros = "";
       int indice = 1;
