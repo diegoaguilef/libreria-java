@@ -164,8 +164,8 @@ public class CrudAutor extends javax.swing.JFrame {
     int dia, mes, anio;
     Fecha fecha_nacimiento;
     String pais = "";    
-    if(!txtNombre.getText().equals("") ||
-      !validarFecha(txtFecha.getText()) ||
+    if(!txtNombre.getText().equals("") &&
+      validarFecha(txtFecha.getText()) &&
       !txtPais.getText().equals("")){
       String[] fecha = parsearFecha(txtFecha.getText());
       nombre = txtNombre.getText();
@@ -196,8 +196,8 @@ public class CrudAutor extends javax.swing.JFrame {
     String pais = "";
     int id;
     
-    if(!txtNombre.getText().equals("") ||
-      !validarFecha(txtFecha.getText()) ||
+    if(!txtNombre.getText().equals("") &&
+      validarFecha(txtFecha.getText()) &&
       !txtPais.getText().equals("")){
       String[] fecha = parsearFecha(txtFecha.getText());
       nombre = txtNombre.getText();
@@ -224,7 +224,7 @@ public class CrudAutor extends javax.swing.JFrame {
     // TODO add your handling code here:
     String nombre = "";
     int id;
-    if(!txtNombre.getText().equals("") || !txtId.getText().equals("")){
+    if(!txtId.getText().equals("")){
       nombre = txtNombre.getText();
       id = Integer.parseInt(txtId.getText());
       Autor autor = DatosAutor.buscarId(id);

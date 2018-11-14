@@ -254,7 +254,7 @@ public class CrudLibro extends javax.swing.JFrame {
     // TODO add your handling code here:
     String nombre = "";
     int id;
-    if(!txtNombre.getText().equals("") || !txtId.getText().equals("")){
+    if(!txtId.getText().equals("")){
       nombre = txtNombre.getText();
       id = Integer.parseInt(txtId.getText());
       Libro libro = DatosLibro.buscarId(id);
@@ -270,7 +270,7 @@ public class CrudLibro extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Libro no encontrado");
       }
     }else{
-      JOptionPane.showMessageDialog(null, "No puede quedar nombre o Id vacio ");
+      JOptionPane.showMessageDialog(null, "No puede quedar Id vacio ");
     }
   }//GEN-LAST:event_btnSearchActionPerformed
 
